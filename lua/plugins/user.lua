@@ -2,9 +2,48 @@
 -- Here are some examples:
 
 ---@type LazySpec
+
 return {
 
   -- == Examples of Adding Plugins ==
+  {
+    "hedyhli/outline.nvim",
+    lazy = true,
+    cmd = { "Outline", "OutlineOpen" },
+    keys = { -- Example mapping to toggle outline
+      { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
+    },
+    opts = {
+      -- Your setup opts here
+    },
+  },
+
+  {
+    "kmontocam/nvim-conda",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    lazy = false,
+    keys = {
+      { "ca", "<cmd>CondaActivate<cr>" },
+      { "da", "<cmd>CondaDeactivate<cr>" },
+    },
+  },
+
+  {
+    "linux-cultist/venv-selector.nvim",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "mfussenegger/nvim-dap",
+      "mfussenegger/nvim-dap-python", --optional
+      { "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
+    },
+    lazy = false,
+    branch = "regexp", -- This is the regexp branch, use this for the new version
+    config = function() require("venv-selector").setup() end,
+    keys = {
+      { "<leader>v", "<cmd>VenvSelect<cr>" },
+    },
+  },
+
   {
     "ray-x/lsp_signature.nvim",
     event = "BufRead",
