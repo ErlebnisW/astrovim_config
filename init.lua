@@ -7,6 +7,9 @@ if not (vim.env.LAZY or (vim.uv or vim.loop).fs_stat(lazypath)) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+vim.api.nvim_set_keymap("i", "jk", "<Esc>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "jj", "<Esc>", { noremap = true, silent = true })
+
 -- validate that lazy is available
 if not pcall(require, "lazy") then
   -- stylua: ignore

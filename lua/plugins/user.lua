@@ -7,6 +7,11 @@ return {
 
   -- == Examples of Adding Plugins ==
   {
+    "karb94/neoscroll.nvim",
+    config = function() require("neoscroll").setup {} end,
+  },
+
+  {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
     dependencies = {
