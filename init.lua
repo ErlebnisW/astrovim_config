@@ -6,6 +6,7 @@ if not (vim.env.LAZY or (vim.uv or vim.loop).fs_stat(lazypath)) then
   vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
 end
 vim.opt.rtp:prepend(lazypath)
+vim.opt.autochdir = true
 
 -- validate that lazy is available
 if not pcall(require, "lazy") then
@@ -14,7 +15,6 @@ if not pcall(require, "lazy") then
   vim.fn.getchar()
   vim.cmd.quit()
 end
-
 
 require "lazy_setup"
 require "polish"
